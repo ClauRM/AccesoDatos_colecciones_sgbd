@@ -1,12 +1,9 @@
 #include <stdio.h>
 #include <string.h> //libreria para tratamiento de texto
 
-// ARGUMENTOS: TIPO DE OPERACION, NOMBRE DE LA BASE DE DATOS, NOMBRE DE LA TABLA Y DATO A ALMACENAR
-// LEER Y ALMACENAR
-
-int main(int argc, char *argv[]) // pasar datos por parametro
+int main(int argc, char *argv[])
 {
-    FILE *archivo; // creamos un elemento de tipo file denominado archivo
+    FILE *archivo;
 
     char *operacion = argv[1];   // tipo de operacion
     char *basededatos = argv[2]; // nombre de la base de datos
@@ -19,11 +16,10 @@ int main(int argc, char *argv[]) // pasar datos por parametro
 
     if (strcmp(operacion, "select") == 0) // strcmp compara dos string, si el resultado es 0 son iguales
     {
-        // MODIFICAR LEER TODOS LOS ARCHIVOS DE UNA CARPETA
         char *documento = argv[4]; // nombre del fichero
         char rutaarchivo[100];     // defino variable para almacenar la ruta completa
-        strcpy(rutaarchivo,rutacollection); 
-        strcat(rutaarchivo, "/");  // a la ruta de archivo concatenar/documento.json
+        strcpy(rutaarchivo, rutacollection);
+        strcat(rutaarchivo, "/"); // a la ruta de archivo concatenar/documento.json
         strcat(rutaarchivo, documento);
         strcat(rutaarchivo, ".json");
 
@@ -43,13 +39,11 @@ int main(int argc, char *argv[]) // pasar datos por parametro
         char *documento = argv[4]; // nombre del fichero
         char *texto = argv[5];     // dato a almacenar o buscar en el fichero
 
-        char rutaarchivo[100];    // defino variable para almacenar la ruta completa
-        strcpy(rutaarchivo,rutacollection); 
+        char rutaarchivo[100]; // defino variable para almacenar la ruta completa
+        strcpy(rutaarchivo, rutacollection);
         strcat(rutaarchivo, "/"); // a la ruta de archivo concatenar/documento.json
         strcat(rutaarchivo, documento);
         strcat(rutaarchivo, ".json");
-
-        printf(rutaarchivo);
 
         archivo = fopen(rutaarchivo, "w");   // modo write para insertar un nuevo registro unico
         fputs(strcat(texto, "\n"), archivo); // puts guarda el texto en el fichero
@@ -72,8 +66,8 @@ int main(int argc, char *argv[]) // pasar datos por parametro
         char *documento = argv[4]; // nombre del fichero
         char *texto = argv[5];     // dato a almacenar o buscar en el fichero
 
-        char rutaarchivo[100];    // defino variable para almacenar la ruta completa
-        strcpy(rutaarchivo,rutacollection); 
+        char rutaarchivo[100]; // defino variable para almacenar la ruta completa
+        strcpy(rutaarchivo, rutacollection);
         strcat(rutaarchivo, "/"); // a la ruta de archivo concatenar/documento.json
         strcat(rutaarchivo, documento);
         strcat(rutaarchivo, ".json");
@@ -86,7 +80,9 @@ int main(int argc, char *argv[]) // pasar datos por parametro
             if (strstr(registro, texto) != NULL)
             { // busca el texto en el registro actual leido. Si encuentra coincidencia devuelve distinto de NULL
                 printf("Localizado registro: %s \n", registro);
-            } else{
+            }
+            else
+            {
                 printf("No se han localizado registros");
             }
         }
